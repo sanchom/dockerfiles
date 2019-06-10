@@ -1,9 +1,12 @@
-FROM ubuntu:17.10
+FROM ubuntu:19.04
 
 RUN apt-get update && apt-get install -y \
-  racket \
   openssl \
   sudo \
-  ca-certificates
+  ca-certificates \
+  sqlite3 \
+  wget
 
-RUN raco pkg install --auto pollen hyphenate xexpr-path
+RUN wget https://mirror.racket-lang.org/installers/7.3/racket-7.3-x86_64-linux.sh && chmod 755 ./racket-7.3-x86_64-linux.sh && \
+    ./racket-7.3-x86_64-linux.sh --unix-style && \
+    raco pkg install --auto pollen hyphenate xexpr-path
