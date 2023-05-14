@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y \
   openssl \
@@ -7,6 +7,6 @@ RUN apt-get update && apt-get install -y \
   sqlite3 \
   wget
 
-RUN wget https://mirror.racket-lang.org/installers/7.3/racket-7.3-x86_64-linux.sh && chmod 755 ./racket-7.3-x86_64-linux.sh && \
-    ./racket-7.3-x86_64-linux.sh --unix-style && \
+RUN wget https://download.racket-lang.org/installers/8.9/racket-8.9-x86_64-linux-cs.sh && chmod 755 ./racket-8.9-x86_64-linux-cs.sh && \
+    ./racket-8.9-x86_64-linux-cs.sh --unix-style && \
     raco pkg install --auto pollen hyphenate xexpr-path
